@@ -3,7 +3,7 @@
 img-touch-canvas - v0.1
 http://github.com/rombdn/img-touch-canvas
 
-Zoomage.js - v1.0.0 (Latest)
+Zoomage.js - v1.1.0 (Latest)
 https://github.com/Becavalier/Zoomage.js
 
 (c) 2013 Romain BEAUDON
@@ -14,17 +14,15 @@ This code may be freely distributed under the MIT License
 =================================
 */
 
-(function(root, factory) {
+(function(root, factory, document) {
 
-    if (typeof module === "object" && module.exports) {
-
-        module.exports = factory();
-
-    } else {
-
-        root.Zoomage = factory();
-        
+    if(typeof document == "undefined") {
+        throw '[Zoomage.js Error] You must use Zoomage.js in a browser environment, missing key object [document].';
     }
+
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global.Vue = factory());
 
 }(this, function() {
 
@@ -34,8 +32,8 @@ This code may be freely distributed under the MIT License
         }
 
         // Set container and canvas
-        this.container            = options.container; 
-        this.canvas               = document.createElement("canvas");
+        this.container             = options.container; 
+        this.canvas                = document.createElement("canvas");
 
         // Append the canvas
         this.container.appendChild(this.canvas);
@@ -833,4 +831,4 @@ This code may be freely distributed under the MIT License
 
     return Zoomage;
 
-}));
+}, window.document));
