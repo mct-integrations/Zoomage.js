@@ -1,10 +1,11 @@
 {
   "name": "zoomage.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An open source library for image zooming by touch gestures on HTML5 pages.",
   "main": "Zoomage.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node node_modules/webpack/bin/webpack",
+    "test": "node node_modules/webpack-dev-server/bin/webpack-dev-server --content-base ./test"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
-    "gulp-uglifyjs": "^0.6.2"
+    "gulp-uglifyjs": "^0.6.2",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
   }
 }

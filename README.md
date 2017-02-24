@@ -15,12 +15,12 @@ Example: please open "index.html" in your local browser.
 This library is based on "[rombdn/img-touch-canvas](https://github.com/rombdn/img-touch-canvas)", include updates and bug fix.
 
 
-TODO List
+Install
 ------------
 
-* Support `npm install` to use "Zoomage.js" in Commonjs like environment.
+* `npm install zoomage.js --save`
 
-* Continually issue fixing.
+* Pack with **Webpack** or any other package tools.
 
 Preview
 ------------
