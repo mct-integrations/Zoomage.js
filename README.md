@@ -18,9 +18,13 @@ This library is based on "[rombdn/img-touch-canvas](https://github.com/rombdn/im
 Install
 ------------
 
+Throught NPM:
+
 * `npm install zoomage.js --save`
 
-* Pack with **Webpack** or any other package tools.
+With a `<script>` label:
+
+* `<script src="dist/zoomage.min.js"></script>`
 
 Preview
 ------------
@@ -41,9 +45,9 @@ Preview
 Usage
 ------------
 
-Define a container in which the image will be able to be resized and moved, then add a canvas element.
+Define a container in which the image will be able to be resized and moved, then add a `<canvas>` label.
 
-A full example shows below, you can use the public api `doZoom` to zoom the image in javascript or manually in console.
+A full example shows below, you can use the public api `doZoom` to zoom the image in javascript or manually in browser console.
 
 ```html
     <html>
@@ -71,7 +75,7 @@ A full example shows below, you can use the public api `doZoom` to zoom the imag
                 <canvas id="canvas"></canvas>
             </div>
 
-            <script src="Zoomage.min.js"></script>
+            <script src="./dist/zoomage.min.js"></script>
             <script>
 
                 // Initialize "Zoomage" with a canvas and an image
@@ -133,4 +137,4 @@ A full example shows below, you can use the public api `doZoom` to zoom the imag
 Licence
 ------------
 (c) 2016 YHSPY
-This code may be freely distributed under the MIT License
+This code may be freely distributed under the MIT License.

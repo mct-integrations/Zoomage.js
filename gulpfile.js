@@ -14,13 +14,13 @@ gulp.task('default', function (callback) {
 // Dynamically watching the changes from us
 gulp.task('watch', function () {
 
-    gulp.watch('./src/zoomage.js', ['build']); 
+    gulp.watch('./src/Zoomage.js', ['build']); 
 
 });
 
 gulp.task('build', function(callback) {
 
-    gulp.src('zoomage.js')
+    gulp.src('./src/Zoomage.js')
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist'));    

@@ -7,10 +7,10 @@ Zoomage.js - v1.1.0 (Latest)
 https://github.com/Becavalier/Zoomage.js
 
 (c) 2013 Romain BEAUDON
-This code may be freely distributed under the MIT License
+This code may be freely distributed under the MIT License.
 
 (c) 2016 YHSPY
-This code may be freely distributed under the MIT License
+This code may be freely distributed under the MIT License.
 =================================
 */
 
@@ -22,7 +22,7 @@ This code may be freely distributed under the MIT License
 
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    (global.Vue = factory());
+    (global.Zoomage = factory());
 
 }(this, function() {
 
@@ -198,8 +198,8 @@ This code may be freely distributed under the MIT License
                 var x = p2.pageX - p1.pageX,
                     y = p2.pageY - p1.pageY;
 
-                // TO FIX (If you continuously rotating more than 180 degree, here will cause a bug)
-                var rotateAngel = (Math.atan2(y, x) * 180 / Math.PI) < 0 ? 180 + (Math.atan2(y, x) * 180 / Math.PI)  : (Math.atan2(y, x) * 180 / Math.PI);
+                // !!! [NEED TO FIX] (If you continuously rotating more than 180 degree, here will cause a bug)
+                var rotateAngel = Math.atan2(y, x) * 180 / Math.PI;
             }  
 
             rotate = {
@@ -380,7 +380,7 @@ This code may be freely distributed under the MIT License
                 case "onRotate":
                 if (this._type(this.onRotate) === "function") {
                     this.onRotate.call(this, { 
-                        rotate: this.rotate.angle.toFixed(3)
+                        rotate: (this.rotate.angle % 360).toFixed(3)
                     });
                 }
                 break;
@@ -477,7 +477,7 @@ This code may be freely distributed under the MIT License
                 this.zoomD                = 1;
 
                 this.lastTouchRotateAngle = null;
-
+                // Current rotate info (center, angle - abs)
                 this.rotate               = {
                     center: {},
                     angle: 0
