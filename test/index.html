@@ -20,6 +20,28 @@
     </head>
     <body>
         <div id="container"></div>
-        <script src="dist/app.js"></script>
+        <script src="../dist/zoomage.min.js" type="text/javascript"></script>
+        <script>
+            var zoomage = new Zoomage({
+                container: document.querySelector('#container'),
+                maxZoom: 3,
+                minZoom: 0.1,
+                enableGestureRotate: true,
+                enableDesktop: true,
+                dbclickZoomThreshold: 0.2,
+                onDrag: function(data) {
+                    console.log("[Drag Position X] " + data.x, "[Drag Position Y] " + data.y);
+                },
+                onZoom: function(data) {
+                    console.log("[Zoom Scale] " + data.zoom, "\n[Image Width] " + data.scale.width, "\n[Image Height] " + data.scale.height);
+                },
+                onRotate: function(data) {
+                    console.log("[Rotate Degree] " + data.rotate);
+                }
+            });
+
+            // load and display the image;
+            zoomage.load("./scenery.jpg");
+        </script>
     </body>
 </html>

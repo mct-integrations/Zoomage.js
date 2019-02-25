@@ -45,9 +45,11 @@ Preview
 Usage
 ------------
 
-Define a container in which the image will be able to be resized and moved, then add a `<canvas>` label.
+Setup a container where the image could be able to be resized and moved.
 
 A full example shows below, you can use the public api `doZoom` to zoom the image in javascript or manually in browser console.
+
+**Do not set "display: none" property on the parent container of the auto-generated canvas before the initilization.**
 
 ```html
     <html>
@@ -71,13 +73,10 @@ A full example shows below, you can use the public api `doZoom` to zoom the imag
             </style>
         </head>
         <body>
-            <div id="container">
-                <canvas id="canvas"></canvas>
-            </div>
+            <div id="container"></div>
 
             <script src="./dist/zoomage.min.js"></script>
             <script>
-
                 // Initialize "Zoomage" with a canvas and an image
                 var zoomage = new Zoomage({
 
@@ -128,7 +127,6 @@ A full example shows below, you can use the public api `doZoom` to zoom the imag
 
                 // Reduce the image size for 10 percent.
                 zoomage.zoom(-0.1);
-
             </script>
         </body>
     </html>
@@ -136,5 +134,5 @@ A full example shows below, you can use the public api `doZoom` to zoom the imag
 
 Licence
 ------------
-(c) 2016 YHSPY
+(c) 2019 YHSPY
 This code may be freely distributed under the MIT License.
