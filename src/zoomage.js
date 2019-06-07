@@ -219,6 +219,7 @@ Zoomage.prototype = {
         this.lastY = relativeY;
     },
     _doRotate: function(rotateArr) {
+      if ( this.enableGestureRotate ) {
         if (this.lastTouchRotateAngle !== null) {
             this.rotate.angle = this.rotate.angle + 1.5 * (rotateArr.a - this.lastTouchRotateAngle);
             this.rotate.center = rotateArr.o;
@@ -227,6 +228,7 @@ Zoomage.prototype = {
         this.lastTouchRotateAngle = rotateArr.a;
 
         this._runCallback('onRotate');
+      }
     },  
     _zoomInAnimCanvas: function() {
         let zoomThreshold = this.dbclickZoomLength / 10 * 2;
@@ -381,7 +383,9 @@ Zoomage.prototype = {
                 this._runCallback('onZoom');
 
                 // rotate;
-                this._doRotate(this._enableGestureRotate(e.touches));
+                if ( this.enableGestureRotate ) {
+                  this._doRotate(this._enableGestureRotate(e.touches));
+                }
             } else if (e.touches.length == 1) {
                 // just drag;
                 if (this.lastX !== null && this.lastY !== null) {
