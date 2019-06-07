@@ -426,29 +426,27 @@ Zoomage.prototype = {
             this.canvas.setAttribute('width', this.imgTexture.width + 'px');
             this.canvas.setAttribute('height', this.imgTexture.height + 'px');
 
-            if (this.imgTexture.width > this.imgTexture.height) {
-                if (this.canvas.parentNode.clientWidth < this.imgTexture.width) {
-                    this.zoomD  = this.canvas.parentNode.clientWidth / this.imgTexture.width;
+            this.moveXD = (this.canvas.parentNode.clientWidth - this.imgTexture.width) / 2;
+            this.moveYD = (this.canvas.parentNode.clientHeight - this.imgTexture.height) / 2;
 
-                    this.moveYD = (this.canvas.parentNode.clientHeight - this.zoomD * this.imgTexture.height) / 2 - (this.imgTexture.height * (1 - this.zoomD) / 2);
-                    this.moveXD = -this.imgTexture.width * (1 - this.zoomD) / 2; 
-                } else {
-                    this.moveXD = (this.canvas.parentNode.clientWidth - this.imgTexture.width) / 2;
-                    this.moveYD = (this.canvas.parentNode.clientHeight - this.imgTexture.height) / 2;
-                }
-            } else {
-                if (this.canvas.parentNode.clientWidth < this.imgTexture.width) {
-                    this.zoomD  = this.canvas.parentNode.clientHeight / this.imgTexture.height;
+            if ( (this.canvas.parentNode.clientWidth < this.imgTexture.width) || (this.canvas.parentNode.clientWidth < this.imgTexture.width) ) {
+              if ( ( this.canvas.parentNode.clientWidth / this.imgTexture.width ) > ( this.canvas.parentNode.clientHeight / this.imgTexture.height ) ) {
+                this.zoomD = this.canvas.parentNode.clientHeight / this.imgTexture.height;
+              } else {
+                this.zoomD = this.canvas.parentNode.clientWidth / this.imgTexture.width;
+              }
 
-                    this.moveXD = (this.canvas.parentNode.clientWidth - this.zoomD * this.imgTexture.width) / 2 - (this.imgTexture.width * (1 - this.zoomD) / 2);
-                    this.moveYD = -this.imgTexture.height * (1 - this.zoomD) / 2; 
+              this.moveXD = -this.imgTexture.width * (1 - this.zoomD) / 2;
+              this.moveYD = -this.imgTexture.height * (1 - this.zoomD) / 2;
 
-                } else {
-                    this.moveXD = (this.canvas.parentNode.clientWidth - this.imgTexture.width) / 2;
-                    this.moveYD = (this.canvas.parentNode.clientHeight - this.imgTexture.height) / 2;
-                }
+              if ( this.canvas.parentNode.clientWidth < this.imgTexture.width ) {
+                this.moveXD = (this.canvas.parentNode.clientWidth - this.zoomD * this.imgTexture.width) / 2 - this.imgTexture.width * (1 - this.zoomD) / 2;
+              }
+              if ( this.canvas.parentNode.clientHeight < this.imgTexture.height ) {
+                this.moveYD = (this.canvas.parentNode.clientHeight - this.zoomD * this.imgTexture.height) / 2 - this.imgTexture.height * (1 - this.zoomD) / 2;
+              }
             }
-            
+
             this.isImgLoaded = true;
         }.bind(this));
         
