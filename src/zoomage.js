@@ -76,27 +76,14 @@ let Zoomage = function(options) {
     this._checkRequestAnimationFrame();
     
     // set listeners;
-    if (this.enableGestureRotate) {
-        if ('transform' in document.body.style) {
-            this.prefixedTransform = 'transform';
-        } else if ('webkitTransform' in document.body.style) {
-            this.prefixedTransform = 'webkitTransform';
-        }
+      if ('transform' in document.body.style) {
+          this.prefixedTransform = 'transform';
+      } else if ('webkitTransform' in document.body.style) {
+          this.prefixedTransform = 'webkitTransform';
+      }
 
-        this._setEventListenersTransform();
-        requestAnimationFrame(this._animateTransform.bind(this));
-    } else {
-        // adjust the canvas element scale;
-        this.canvas.style.width   = '100%';
-        this.canvas.style.height  = '100%';
-
-        // adjust the scale of canvas drawing surface;
-        this.canvas.width         = this.canvas.clientWidth;
-        this.canvas.height        = this.canvas.clientHeight;
-
-        this._setEventListenersCanvas();
-        requestAnimationFrame(this._animateCanvas.bind(this));
-    }
+      this._setEventListenersTransform();
+      requestAnimationFrame(this._animateTransform.bind(this));
 };
 
 // set initialized canvas scale;
